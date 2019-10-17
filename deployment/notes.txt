@@ -1,0 +1,7 @@
+https://docs.docker.com/machine/drivers/digital-ocean/
+
+docker stack deploy -c docker-stack.yml mybookstore
+
+https://docs.docker.com/machine/drivers/aws/
+
+https://docs.docker.com/machine/examples/aws/#step-1-sign-up-for-aws-and-configure-credentials

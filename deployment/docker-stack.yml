@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  product-service:
+    image: serdarmumcu/productservice:latest
+    restart: always
+
+  website:
+    image: serdarmumcu/website:latest
+    links:
+      - product-service
+    ports:
+      - 80:80
