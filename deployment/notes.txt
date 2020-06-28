@@ -1,0 +1,14 @@
+https://docs.docker.com/machine/drivers/digital-ocean/
+
+docker swarm init --advertise-addr
+
+docker stack deploy -c docker-stack.yml mybookstore
+
+sudo usermod -aG docker $USER
+newgrp docker 
+
+add inbound tcp 80 port
+
+https://docs.docker.com/machine/drivers/aws/
+
+https://docs.docker.com/machine/examples/aws/#step-1-sign-up-for-aws-and-configure-credentials

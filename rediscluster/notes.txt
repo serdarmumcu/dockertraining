@@ -1,0 +1,18 @@
+docker-compose stop importer
+docker-compose stop cluster-configurer
+
+setup cluster:
+	docker-compose run --rm cluster-configurer /bin/bash -c "echo 'yes' | ruby /redis/src/redis-trib.rb create --replicas 1 172.44.10.11:7000 172.44.10.12:7000 172.44.10.13:7000 172.44.10.14:7000 172.44.10.15:7000 172.44.10.16:7000"
+
+redis-cli:
+	docker-compose run --rm redis-cli
+
+query-cluster:
+	docker-compose run --rm redis-cli CLUSTER INFO
+	docker-compose run --rm redis-cli CLUSTER SLOTS
+
+load-dataset:
+	docker-compose run --rm importer /bin/bash -c "cat /scripts/primer-dataset.csv | redis-cli -c -h node_1 -p 7000"
+
+
+docker-compose run --rm redis-cli get key80
